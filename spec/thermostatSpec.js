@@ -1,3 +1,5 @@
+var Thermostat = require('../src/thermostat.js');
+
 describe('Thermostat', function(){
   var thermostat;
 

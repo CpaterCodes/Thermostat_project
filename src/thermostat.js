@@ -41,3 +41,5 @@ Thermostat.prototype.energyUsage = function(){
   if(this.temperature < this.HIGH_LIMIT) return 'medium-usage';
   return 'high-usage';
 };
+
+module.exports = Thermostat;
