@@ -55,4 +55,29 @@ describe('Thermostat', function(){
       expect(thermostat.temperature).toEqual(thermostat.MINIMUM_TEMPERATURE);
     });
   });
+
+  describe('.reset', function(){
+    it('Should reset the temperature to default', function(){
+      thermostat.increase(4);
+      thermostat.reset();
+      expect(thermostat.temperature).toEqual(thermostat.DEFAULT_TEMPERATURE);
+    });
+  });
+
+  describe('.energyUsage', function(){
+    it('Should return low-usage if below 18', function(){
+      thermostat.temperature = thermostat.LOW_LIMIT - 1;
+      expect(thermostat.energyUsage()).toEqual('low-usage');
+    });
+
+    it('Should return medium-usage if 18 and above', function(){
+      thermostat.temperature = thermostat.LOW_LIMIT;
+      expect(thermostat.energyUsage()).toEqual('medium-usage');
+    });
+
+    it('Should return high-usage if 25 and above', function(){
+      thermostat.temperature = thermostat.HIGH_LIMIT;
+      expect(thermostat.energyUsage()).toEqual('high-usage');
+    });
+  });
 });
