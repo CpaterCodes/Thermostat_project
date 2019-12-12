@@ -7,6 +7,11 @@
           var thermostat = new Thermostat();
 
           $(document).ready(function(){
+
+            $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=41f6c1233674bb24b572c58a04f9c2eb&units=metric',function(data){
+              $('#city_temperature').text(data.main.temp);
+            });
+
             $('#temperature').text(thermostat.temperature);
             $('#down').click(function(){
               thermostat.decrease(1);
@@ -17,19 +22,31 @@
               $('#temperature').text(thermostat.temperature);
             });
             $('#powersave').click(function(){
-              if(thermostat.isPowerSave()) thermostat.dangerMode();
-              else thermostat.safetyMode();
+              if(thermostat.isPowerSave()){
+                thermostat.dangerMode();
+                $('#powersave').text('Uh oh! Full power time! :O');
+              } else {
+                thermostat.safetyMode();
+                $('#powersave').text('Yay ^^ Eco-friendly time!');
+              };
+            });
+            $('#reset').click(function(){
+              thermostat.reset();
+              $('#temperature').text(thermostat.temperature);
             });
           });
         </script>
     </head>
     <body>
         <h1>Thermostat.io</h1>
+        <h2 > Current London temperature: <span id='city_temperature'></span>C! Stay safe ^^</h2>
 
         <button id='down'>-</button>
         <span id='temperature'>BOO</span>
         <button id='up'>+</button>
         <br>
-        <button id='powersave'>Powersave mode</button>
+        <button id='powersave'>Yay ^^ Eco-friendly time!</button>
+        <br>
+        <button id='reset'>Reset temperature</button>
     </body>
 </html>
