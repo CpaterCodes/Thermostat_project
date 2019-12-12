@@ -3,50 +3,22 @@
         <title>Thermostat.io</title>
         <script src='src/thermostat.js'></script>
         <script src='jQuery.js'></script>
+        <script src='src/interfaceScript.js'></script>
         <script>
-          var thermostat = new Thermostat();
-
-          $(document).ready(function(){
-
-            $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=41f6c1233674bb24b572c58a04f9c2eb&units=metric',function(data){
-              $('#city_temperature').text(data.main.temp);
-            });
-
-            $('#temperature').text(thermostat.temperature);
-            $('#down').click(function(){
-              thermostat.decrease(1);
-              $('#temperature').text(thermostat.temperature);
-            });
-            $('#up').click(function(){
-              thermostat.increase(1);
-              $('#temperature').text(thermostat.temperature);
-            });
-            $('#powersave').click(function(){
-              if(thermostat.isPowerSave()){
-                thermostat.dangerMode();
-                $('#powersave').text('Uh oh! Full power time! :O');
-              } else {
-                thermostat.safetyMode();
-                $('#powersave').text('Yay ^^ Eco-friendly time!');
-              };
-            });
-            $('#reset').click(function(){
-              thermostat.reset();
-              $('#temperature').text(thermostat.temperature);
-            });
-          });
+          interface_init();
         </script>
     </head>
     <body>
         <h1>Thermostat.io</h1>
-        <h2 > Current London temperature: <span id='city_temperature'></span>C! Stay safe ^^</h2>
-
-        <button id='down'>-</button>
-        <span id='temperature'>BOO</span>
-        <button id='up'>+</button>
-        <br>
-        <button id='powersave'>Yay ^^ Eco-friendly time!</button>
-        <br>
-        <button id='reset'>Reset temperature</button>
+        <h2> Current <span id='city'></span> temperature: <span id='city_temperature'></span>°C! Stay safe ^^</h2>
+        <h3><button id='NewYork'>New York</button><button id='London'>London</button><button id='Ashgabat'>Ashgabat</button></h3>
+        <div>
+          <button id='down'>-</button>
+          <span id='temperature'>Temperature?</span>
+          <button id='up'>+</button>
+          <br>
+          <button id='powersave'></button>
+          <button id='reset'>Reset temperature</button>
+        </div>
     </body>
 </html>
