@@ -38,6 +38,10 @@ describe('Thermostat', function(){
     it('Should not exceed 25 when power saving mode active', function(){
       thermostat.increase(6);
       expect(thermostat.temperature).toEqual(thermostat.POWERSAVE_MAX);
+      thermostat.dangerMode();
+      thermostat.increase(5);
+      thermostat.safetyMode();
+      expect(thermostat.temperature).toEqual(thermostat.POWERSAVE_MAX);
     });
 
     it('Should not exceed 32 when power saving mode inactive', function(){

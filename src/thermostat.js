@@ -30,6 +30,7 @@ Thermostat.prototype.dangerMode = function() {
 
 Thermostat.prototype.safetyMode = function() {
   this.maximum = this.POWERSAVE_MAX;
+  if (this.temperature > this.maximum) this.temperature = this.maximum;
 };
 
 Thermostat.prototype.isPowerSave = function() {
