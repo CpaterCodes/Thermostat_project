@@ -7,18 +7,24 @@
         <script>
           interface_init();
         </script>
+        <link href="interface_styles.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Thermostat.io</h1>
-        <h2> Current <span id='city'></span> temperature: <span id='city_temperature'>null</span>°C! Stay safe ^^</h2>
-        <h3><button id='NewYork'>New York</button><button id='London'>London</button><button id='Ashgabat'>Ashgabat</button></h3>
-        <div>
-          <button id='down'>-</button>
+      <h1>Thermostat.io</h1>
+      <h2> Current <span id='city'></span> temperature: <span id='city_temperature'>null</span>°C! Stay safe! ^^</h2>
+        <h3><button id='NewYork'>New York</button> <button id='London'>London</button> <button id='Ashgabat'>Ashgabat</button></h3>
+        <div class='reading'>
+          <button class='switch' id='down'>-</button>
           <span id='temperature'>Temperature?</span>
-          <button id='up'>+</button>
+          <button class='switch' id='up'>+</button>
           <br>
-          <button id='powersave'></button>
-          <button id='reset'>Reset temperature</button>
-        </div>
-    </body>
+          </div>
+          <br>
+          <button class='footbutton'id='powersave'></button>
+          <br>
+          <button class='footbutton'id='reset'>Reset temperature</button>
+        </body>
+        <footer>
+        <h2>Thank you! Just stay comfy, ok? :)</h2>
+        </footer>
 </html>

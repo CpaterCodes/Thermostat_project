@@ -1,4 +1,4 @@
-var api_key = 'environmental variable in progress';
+var api_key = 'openweathermap API key goes here';
 
 function weather(cityData,cityName){
   $.get('http://api.openweathermap.org/data/2.5/weather?q=' + cityData + '&appid=' + api_key + '&units=metric',function(data){
